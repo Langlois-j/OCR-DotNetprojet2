@@ -26,6 +26,21 @@ namespace P2FixAnAppDotNetCode.Models.Services
             // TODO complete the code 
             // Default language is "en", french is "fr" and spanish is "es".
             
+            switch (language.ToUpper()) // mise en majsule pour controle plus strict amélioration possible avec fonction complémentaire sans accents et retrait d'éventuel espace en amont ou aval 
+            {
+                case "FRENCH":
+                    culture = "fr";
+                    break;
+                case "ENGLISH":
+                    culture = "en";
+                    break;
+                case "SPANISH":
+                    culture = "es";
+                    break;
+                default:
+                    culture = "en";
+                    break;
+            }
             return culture;
         }
 
