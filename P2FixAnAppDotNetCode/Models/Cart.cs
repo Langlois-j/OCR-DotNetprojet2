@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace P2FixAnAppDotNetCode.Models
 {
@@ -11,6 +14,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Read-only property for display only
         /// </summary>
+        //// tableau immuable au singleton
+        private List<CartLine> _cartLines = new List<CartLine>();
         public IEnumerable<CartLine> Lines => GetCartLineList();
 
         /// <summary>
@@ -28,6 +33,11 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
+            _cartLines.Add(new CartLine { OrderLineId = 0, Product = product,Quantity= quantity });
+            Debug.WriteLine("___________________________________");
+            Debug.WriteLine($"Produit ajouté : {product.Name}, Quantité : {quantity}");
+            Debug.WriteLine($"Il y a {_cartLines.Count} éléments dans la liste.");
+            Debug.WriteLine("___________________________________");
         }
 
         /// <summary>
