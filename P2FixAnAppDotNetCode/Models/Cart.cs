@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace P2FixAnAppDotNetCode.Models
 {
@@ -11,6 +14,8 @@ namespace P2FixAnAppDotNetCode.Models
         /// <summary>
         /// Read-only property for display only
         /// </summary>
+        //// tableau immuable au singleton
+        private List<CartLine> _cartLines = new();
         public IEnumerable<CartLine> Lines => GetCartLineList();
 
         /// <summary>
@@ -19,7 +24,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// <returns></returns>
         private List<CartLine> GetCartLineList()
         {
-            return new List<CartLine>();
+            return _cartLines;
         }
 
         /// <summary>
@@ -28,6 +33,25 @@ namespace P2FixAnAppDotNetCode.Models
         public void AddItem(Product product, int quantity)
         {
             // TODO implement the method
+            //Controle de la quantité
+            var cartLine = _cartLines.FirstOrDefault(l => l.Product.Id == product.Id);
+            if (cartLine != null)
+            {
+                cartLine.Quantity += quantity;
+                Debug.WriteLine($"Produit déjà présent : {product.Name}, Quantité : {cartLine.Quantity}");
+                return;
+            }
+            CartLine newCartline = new()
+            {
+                Product = product,
+                Quantity = quantity
+            };
+            _cartLines.Add(newCartline);
+
+            Debug.WriteLine("___________________________________");
+            Debug.WriteLine($"Produit ajouté : {product.Name}, Quantité : {quantity}");
+            Debug.WriteLine($"Il y a {_cartLines.Count} éléments dans la liste.");
+            Debug.WriteLine("___________________________________");
         }
 
         /// <summary>
@@ -42,7 +66,8 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetTotalValue()
         {
             // TODO implement the method
-            return 0.0;
+            double total = _cartLines.Sum(obj => obj.Product.Price * obj.Quantity);
+            return total;
         }
 
         /// <summary>
@@ -51,7 +76,22 @@ namespace P2FixAnAppDotNetCode.Models
         public double GetAverageValue()
         {
             // TODO implement the method
-            return 0.0;
+            bool Pondérer = true;
+            double totalValeur;
+            double totalQuantité;
+            if (Pondérer)
+            {
+                totalValeur = _cartLines.Sum(obj => obj.Product.Price * obj.Quantity);
+                totalQuantité = _cartLines.Sum(obj => obj.Quantity);
+            }
+            else
+            { 
+            totalValeur = _cartLines.Sum(obj => obj.Product.Price);
+            totalQuantité = _cartLines.Count();
+        }
+                return totalValeur / totalQuantité;
+            ;
+
         }
 
         /// <summary>
