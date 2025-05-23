@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Localization;
+using P2FixAnAppDotNetCode.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace P2FixAnAppDotNetCode.Models
 {
@@ -20,7 +22,7 @@ namespace P2FixAnAppDotNetCode.Models
 
         [Required(ErrorMessage = "ErrorMissingCity")]
         public string City { get; set; }
-
+        [Required(ErrorMessage = "ErrorMissingZip")]
         public string Zip { get; set; }
 
         [Required(ErrorMessage = "ErrorMissingCountry")]
