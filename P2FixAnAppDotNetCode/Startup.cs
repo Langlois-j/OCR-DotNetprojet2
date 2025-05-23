@@ -44,11 +44,12 @@ namespace P2FixAnAppDotNetCode
             { 
                 var supportedCultures = new List<CultureInfo>
                 {
-                  //  new CultureInfo("en-GB"),
-                  //  new CultureInfo("en-US"),
+                   new CultureInfo("en-GB"),
+                    new CultureInfo("en-US"),
                     new CultureInfo("en"),
-                  //  new CultureInfo("fr-FR"),
+                   new CultureInfo("fr-FR"),
                     new CultureInfo("fr"),
+               
                 };
 
                 opts.DefaultRequestCulture = new RequestCulture("en");
