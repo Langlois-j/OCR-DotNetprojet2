@@ -131,6 +131,9 @@
   </data>
   <data name="ErrorMissingZip" xml:space="preserve">
     <value>Introduzca el código postal</value>
+<<<<<<< Updated upstream
     <comment>gestion de l'absence de code postal</comment>
+=======
+>>>>>>> Stashed changes
   </data>
 </root>

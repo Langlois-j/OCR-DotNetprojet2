@@ -130,7 +130,11 @@
     <value>Veuillez renseigner un nom</value>
   </data>
   <data name="ErrorMissingZip" xml:space="preserve">
+<<<<<<< Updated upstream
     <value>Veuillez renseigner un code postal</value>
     <comment>gestion de l'absence de code postal</comment>
+=======
+    <value>Veuillez renseigner le code postal</value>
+>>>>>>> Stashed changes
   </data>
 </root>
