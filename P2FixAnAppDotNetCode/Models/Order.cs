@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Localization;
+using P2FixAnAppDotNetCode.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace P2FixAnAppDotNetCode.Models
 {
@@ -12,18 +14,29 @@ namespace P2FixAnAppDotNetCode.Models
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingName")]
+        [Required(
+            ErrorMessageResourceType = typeof(Resources.Models.ViewModels.Order),
+            ErrorMessageResourceName = "ErrorMissingName"
+            )]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingAddress")]
+        [Required(
+            ErrorMessageResourceType = typeof(Resources.Models.ViewModels.Order),
+            ErrorMessageResourceName = "ErrorMissingAddress")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingCity")]
+        [Required(
+             ErrorMessageResourceType = typeof(Resources.Models.ViewModels.Order),
+             ErrorMessageResourceName = "ErrorMissingCity")]
         public string City { get; set; }
-
+        [Required(
+             ErrorMessageResourceType = typeof(Resources.Models.ViewModels.Order),
+             ErrorMessageResourceName = "ErrorMissingZip")]
         public string Zip { get; set; }
 
-        [Required(ErrorMessage = "ErrorMissingCountry")]
+        [Required(
+             ErrorMessageResourceType = typeof(Resources.Models.ViewModels.Order),
+            ErrorMessageResourceName = "ErrorMissingCountry")]
         public string Country { get; set; }
 
         [BindNever]
