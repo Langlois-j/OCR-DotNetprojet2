@@ -37,6 +37,10 @@ namespace P2FixAnAppDotNetCode.Models
             var cartLine = _cartLines.FirstOrDefault(l => l.Product.Id == product.Id);
             if (cartLine != null)
             {
+                if(cartLine.Quantity+quantity> product.Stock)
+                {
+                    return;
+                }
                 cartLine.Quantity += quantity;
                 Debug.WriteLine($"Produit déjà présent : {product.Name}, Quantité : {cartLine.Quantity}");
                 return;
