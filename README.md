@@ -1,9 +1,12 @@
 # DotNetprojet2
+Projet d'étude pour formation OpenClassRooms
+Début : 26/05/2025
 # Prérequis
-- Dotnet
+- Dotnet 9.0
 - Projet github
 - IDE (Visual studio par exemple)
-# installation
+  
+# Installation
 
 - Cloner/Fork [le projet](https://github.com/OpenClassrooms-Student-Center/DotNetprojet2)
 - Créer une branche afin d'effectuée les corrections
