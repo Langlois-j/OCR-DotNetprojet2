@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace P2FixAnAppDotNetCode.Models
@@ -32,7 +33,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            // TODO Done implement the method
             //Controle de la quantité
             var cartLine = _cartLines.FirstOrDefault(l => l.Product.Id == product.Id);
             if (cartLine != null)
@@ -42,7 +43,7 @@ namespace P2FixAnAppDotNetCode.Models
                     return;
                 }
                 cartLine.Quantity += quantity;
-                Debug.WriteLine($"Produit déjà présent : {product.Name}, Quantité : {cartLine.Quantity}");
+              
                 return;
             }
             CartLine newCartline = new()
@@ -51,17 +52,13 @@ namespace P2FixAnAppDotNetCode.Models
                 Quantity = quantity
             };
             _cartLines.Add(newCartline);
-
-            Debug.WriteLine("___________________________________");
-            Debug.WriteLine($"Produit ajouté : {product.Name}, Quantité : {quantity}");
-            Debug.WriteLine($"Il y a {_cartLines.Count} éléments dans la liste.");
-            Debug.WriteLine("___________________________________");
         }
 
         /// <summary>
         /// Removes a product form the cart
         /// </summary>
         public void RemoveLine(Product product) =>
+
             GetCartLineList().RemoveAll(l => l.Product.Id == product.Id);
 
         /// <summary>
@@ -104,7 +101,8 @@ namespace P2FixAnAppDotNetCode.Models
         public Product FindProductInCartLines(int productId)
         {
             // TODO implement the method
-            return null;
+    
+            return _cartLines.FirstOrDefault(l => l.Product.Id == productId)?.Product;
         }
 
         /// <summary>

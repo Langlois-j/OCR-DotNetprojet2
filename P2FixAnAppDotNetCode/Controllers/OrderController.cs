@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using P2FixAnAppDotNetCode.Models;
@@ -33,7 +34,8 @@ namespace P2FixAnAppDotNetCode.Controllers
                 order.Lines = (_cart as Cart)?.Lines.ToArray();
                 _orderService.SaveOrder(order);
                 
-                return RedirectToAction(nameof(Completed));
+                //return RedirectToAction(nameof(Completed));
+                return RedirectToAction("Index","Product");
             }
             else
             {
