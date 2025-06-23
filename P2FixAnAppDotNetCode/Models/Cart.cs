@@ -42,7 +42,6 @@ namespace P2FixAnAppDotNetCode.Models
                     return;
                 }
                 cartLine.Quantity += quantity;
-                Debug.WriteLine($"Produit déjà présent : {product.Name}, Quantité : {cartLine.Quantity}");
                 return;
             }
             CartLine newCartline = new()
@@ -51,11 +50,6 @@ namespace P2FixAnAppDotNetCode.Models
                 Quantity = quantity
             };
             _cartLines.Add(newCartline);
-
-            Debug.WriteLine("___________________________________");
-            Debug.WriteLine($"Produit ajouté : {product.Name}, Quantité : {quantity}");
-            Debug.WriteLine($"Il y a {_cartLines.Count} éléments dans la liste.");
-            Debug.WriteLine("___________________________________");
         }
 
         /// <summary>
