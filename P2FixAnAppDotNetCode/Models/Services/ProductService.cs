@@ -2,6 +2,7 @@
 using P2FixAnAppDotNetCode.Models.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models.Services
@@ -57,10 +58,18 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             // TODO implement the method
             // update product inventory by using _productRepository.UpdateProductStocks() method.
-      
+
+            Debug.WriteLine("___________________________________");
+            Debug.WriteLine("UpdateProductQuantities");
+            Debug.WriteLine("___________________________________");
             foreach (var line in cart.Lines)
             {
-                _productRepository.UpdateProductStocks(line.Product.Id, line.Quantity); 
+                Debug.WriteLine("___________________________________");
+                Debug.WriteLine($"Line: {line.Product.Name}, Quantité : {line.Product.Stock}");
+                Debug.WriteLine("___________________________________");
+                _productRepository.UpdateProductStocks(line.Product.Id, line.Quantity);
+                Debug.WriteLine($"Line: {line.Product.Name}, Quantité : {line.Quantity},{line.Product.Stock} ");
+                Debug.WriteLine("___________________________________");
             }
         }
     }
