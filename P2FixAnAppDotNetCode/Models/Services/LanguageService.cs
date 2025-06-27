@@ -29,16 +29,16 @@ namespace P2FixAnAppDotNetCode.Models.Services
             switch (language.ToUpper()) // mise en majsule pour controle plus strict amélioration possible avec fonction complémentaire sans accents et retrait d'éventuel espace en amont ou aval 
             {
                 case "FRENCH":
-                    culture = "fr-FR";
+                    culture = "fr";
                     break;
                 case "ENGLISH":
-                    culture = "en-GB";
+                    culture = "en";
                     break;
                 case "SPANISH":
-                    culture = "es-ES";
+                    culture = "es";
                     break;
                 default:
-                    culture = "en-GB";
+                    culture = "en";
                     break;
             }
             return culture;
